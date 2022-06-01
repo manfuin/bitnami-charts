@@ -152,7 +152,7 @@ spec:
                 secretKeyRef:
                 {{- if .Values.auth.existingSecretPerPassword }}
                   name: {{ tpl (include "common.secrets.name" (dict "existingSecret" .Values.auth.existingSecretPerPassword.tlsTruststorePassword "context" $)) $ }}
-                  key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsKeystorePassword") }}
+                  key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecretPerPassword "key" "tlsTruststorePassword") }}
                 {{- else }}
                   name: {{ $globalSecretName }}
                   key: {{ include "common.secrets.key" (dict "existingSecret" .Values.auth.existingSecret "key" "tls-truestore-password") }}
